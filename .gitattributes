@@ -1,0 +1,15 @@
+# automatically mark text files
+* text=auto
+
+# enforce lf and desired whitespace settings for these files
+*.php text eol=lf whitespace=blank-at-eol,blank-at-eof,space-before-tab,tab-in-indent,tabwidth=4 diff=php
+*.xml text eol=lf whitespace=blank-at-eol,blank-at-eof,space-before-tab,tab-in-indent,tabwidth=4
+*.json text eol=lf whitespace=blank-at-eol,blank-at-eof,space-before-tab,tab-in-indent,tabwidth=4
+*.yml text eol=lf whitespace=blank-at-eol,blank-at-eof,space-before-tab,tab-in-indent,tabwidth=4
+
+# don't add these files/directories to github release tarballs (composer dist install)
+/example export-ignore
+/.gitattributes export-ignore
+/.gitignore export-ignore
+/.php_cs.dist export-ignore
+/README.md export-ignore
