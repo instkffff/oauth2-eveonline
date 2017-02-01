@@ -29,7 +29,7 @@ class EveOnlineResourceOwner implements ResourceOwnerInterface
     }
 
     /**
-     * @return int|null
+     * @return int
      */
     public function getId(): int
     {
@@ -37,7 +37,7 @@ class EveOnlineResourceOwner implements ResourceOwnerInterface
     }
 
     /**
-     * @return string|null
+     * @return string
      */
     public function getName(): string
     {
@@ -45,7 +45,7 @@ class EveOnlineResourceOwner implements ResourceOwnerInterface
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTime
      */
     public function getExpiresOn(): \DateTime
     {
@@ -53,7 +53,7 @@ class EveOnlineResourceOwner implements ResourceOwnerInterface
     }
 
     /**
-     * @return string|null
+     * @return string
      */
     public function getScopes(): string
     {
@@ -61,7 +61,7 @@ class EveOnlineResourceOwner implements ResourceOwnerInterface
     }
 
     /**
-     * @return string|null
+     * @return string
      */
     public function getTokenType(): string
     {
@@ -69,7 +69,7 @@ class EveOnlineResourceOwner implements ResourceOwnerInterface
     }
 
     /**
-     * @return string|null
+     * @return string
      */
     public function getCharacterOwnerHash(): string
     {
@@ -77,7 +77,7 @@ class EveOnlineResourceOwner implements ResourceOwnerInterface
     }
 
     /**
-     * @return string|null
+     * @return string
      */
     public function getIntellectualProperty(): string
     {
