@@ -56,7 +56,7 @@ HTML;
         $user->getName(),
         // expires token is in UTC timezone by default, i want to see when it expires relative to my local time
         $user->getExpiresOn()->setTimezone(new \DateTimeZone('Europe/Amsterdam'))->format(DATE_RFC3339),
-        $user->getScopes(),
+        implode(', ', $user->getScopes()),
         $user->getTokenType(),
         $user->getCharacterOwnerHash(),
         $user->getIntellectualProperty()

@@ -53,11 +53,11 @@ class EveOnlineResourceOwner implements ResourceOwnerInterface
     }
 
     /**
-     * @return string
+     * @return string[]
      */
-    public function getScopes(): string
+    public function getScopes(): array
     {
-        return $this->response['Scopes'];
+        return explode(' ', $this->response['Scopes']);
     }
 
     /**
