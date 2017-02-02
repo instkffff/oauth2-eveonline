@@ -38,13 +38,13 @@ if (!isset($_GET['code'])) {
 }
 
 // Try to get an access token (using the authorization code grant)
-$token = $provider->getAccessToken('authorization_code', ['code' => $_GET['code']]);
+$accessToken = $provider->getAccessToken('authorization_code', ['code' => $_GET['code']]);
+// This token should be stored somewhere (e.g. in the session, since the expiration time is quite short)
 
 // Now that you have a token you can look up a users profile data
 try {
-    // We got an access token, now get the user's details
     /** @var \Alcohol\OAuth2\Client\Provider\EveOnlineResourceOwner $user */
-    $user = $provider->getResourceOwner($token);
+    $user = $provider->getResourceOwner($accessToken);
     $html = <<<'HTML'
 <pre>
 CharacterID: %u
@@ -72,6 +72,3 @@ HTML;
     // Failed to get user details
     exit('Oh dear...');
 }
-
-// Use this to interact with an API on the users behalf
-printf('<pre>Token: %s</pre>', $token->getToken());
