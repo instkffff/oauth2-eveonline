@@ -96,7 +96,7 @@ class EveOnline extends AbstractProvider
      *
      * @return string
      */
-    protected function getScopeSeparator()
+    protected function getScopeSeparator(): string
     {
         return ' ';
     }
