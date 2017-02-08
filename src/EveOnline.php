@@ -20,11 +20,25 @@ class EveOnline extends AbstractProvider
     use BearerAuthorizationTrait;
 
     /**
-     * Whether or not to issue calls against the test server (Sisi).
+     * The base URL for authorizing a client.
      *
-     * @var bool
+     * @var string
      */
-    protected $useSisi = false;
+    protected $urlAuthorize = 'https://login.eveonline.com/oauth/authorize';
+
+    /**
+     * The base URL for requesting an access token.
+     *
+     * @var string
+     */
+    protected $urlAccessToken = 'https://login.eveonline.com/oauth/token';
+
+    /**
+     * The URL for requesting the resource owner's details.
+     *
+     * @var string
+     */
+    protected $urlResourceOwnerDetails = 'https://login.eveonline.com/oauth/verify';
 
     /**
      * Get authorization url to begin OAuth flow.
@@ -35,7 +49,7 @@ class EveOnline extends AbstractProvider
      */
     public function getBaseAuthorizationUrl(): string
     {
-        return sprintf('%s/oauth/authorize', $this->getDomain());
+        return $this->urlAuthorize;
     }
 
     /**
@@ -49,7 +63,7 @@ class EveOnline extends AbstractProvider
      */
     public function getBaseAccessTokenUrl(array $params): string
     {
-        return sprintf('%s/oauth/token', $this->getDomain());
+        return $this->urlAccessToken;
     }
 
     /**
@@ -63,21 +77,7 @@ class EveOnline extends AbstractProvider
      */
     public function getResourceOwnerDetailsUrl(AccessToken $token): string
     {
-        return sprintf('%s/oauth/verify', $this->getDomain());
-    }
-
-    /**
-     * Get the base domain to use in each request (test or production).
-     *
-     * @return string
-     */
-    protected function getDomain(): string
-    {
-        if ($this->useSisi) {
-            return 'https://sisilogin.testeveonline.com';
-        }
-
-        return 'https://login.eveonline.com';
+        return $this->urlResourceOwnerDetails;
     }
 
     /**

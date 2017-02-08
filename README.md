@@ -19,10 +19,14 @@ Have a look at the [examples](example/).
 ### Basic Authentication Flow
 
 ```php
-$provider = new \Alcohol\OAuth2\Client\Provider\EveOnline([
+$provider = new Alcohol\OAuth2\Client\Provider\EveOnline([
     'clientId' => '{client-id}',
     'clientSecret' => '{client-secret}',
     'redirectUri' => 'https://example.com/callback-url',
+    // the following are optional and displayed here with their default values
+    'urlAuthorize' => 'https://login.eveonline.com/oauth/authorize',
+    'urlAccessToken' => 'https://login.eveonline.com/oauth/token',
+    'urlResourceOwnerDetails' => 'https://login.eveonline.com/oauth/verify',
 ]);
 
 // If we don't have an authorization code then get one
@@ -68,7 +72,7 @@ if (!isset($_GET['code'])) {
 
         var_export($resourceOwner->toArray());
 
-    } catch (\League\OAuth2\Client\Provider\Exception\IdentityProviderException $e) {
+    } catch (League\OAuth2\Client\Provider\Exception\IdentityProviderException $e) {
 
         // Failed to get the access token or user details.
         exit($e->getMessage());
@@ -88,7 +92,7 @@ $request = $provider->getAuthenticatedRequest(
     $accessToken
 );
 
-$client = new \GuzzleHttp\Client();
+$client = new GuzzleHttp\Client();
 $response = $client->send($request);
 
 print $response->getBody();
@@ -112,7 +116,7 @@ if ($existingAccessToken->hasExpired()) {
 
 ## Testing
 
-> Sorry, I got lazy. Just don't break the example.
+> Sorry, I got lazy. Just don't break the examples.
 
 
 ## Contributing

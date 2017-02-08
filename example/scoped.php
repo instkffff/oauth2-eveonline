@@ -15,6 +15,10 @@ $provider = new Alcohol\OAuth2\Client\Provider\EveOnline([
     'clientId' => '{client-id}',
     'clientSecret' => '{client-secret}',
     'redirectUri' => 'https://example.com/callback-url',
+    // the following are optional and displayed here with their default values
+    'urlAuthorize' => 'https://login.eveonline.com/oauth/authorize',
+    'urlAccessToken' => 'https://login.eveonline.com/oauth/token',
+    'urlResourceOwnerDetails' => 'https://login.eveonline.com/oauth/verify',
 ]);
 
 // If we don't have an authorization code then get one
