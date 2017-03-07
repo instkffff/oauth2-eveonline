@@ -71,13 +71,27 @@ class EveOnline extends AbstractProvider
      *
      * @see http://eveonline-third-party-documentation.readthedocs.io/en/latest/sso/obtaincharacterid.html
      *
-     * @param AccessToken $token
+     * @param \League\OAuth2\Client\Token\AccessToken $token
      *
      * @return string
      */
     public function getResourceOwnerDetailsUrl(AccessToken $token): string
     {
         return $this->urlResourceOwnerDetails;
+    }
+
+    /**
+     * Requests and returns the resource owner of given access token.
+     *
+     * @param \League\OAuth2\Client\Token\AccessToken $token
+     *
+     * @return \Alcohol\OAuth2\Client\Provider\EveOnlineResourceOwner
+     */
+    public function getResourceOwner(AccessToken $token)
+    {
+        $response = $this->fetchResourceOwnerDetails($token);
+
+        return $this->createResourceOwner($response, $token);
     }
 
     /**
@@ -104,10 +118,10 @@ class EveOnline extends AbstractProvider
     /**
      * Check a provider response for errors.
      *
-     * @param ResponseInterface $response
+     * @param \Psr\Http\Message\ResponseInterface $response
      * @param array|string $data
      *
-     * @throws IdentityProviderException
+     * @throws \League\OAuth2\Client\Provider\Exception\IdentityProviderException
      */
     protected function checkResponse(ResponseInterface $response, $data)
     {
@@ -124,9 +138,9 @@ class EveOnline extends AbstractProvider
      * Generate a user object from a successful user details request.
      *
      * @param array $response
-     * @param AccessToken $token
+     * @param \League\OAuth2\Client\Token\AccessToken $token
      *
-     * @return EveOnlineResourceOwner
+     * @return \Alcohol\OAuth2\Client\Provider\EveOnlineResourceOwner
      */
     protected function createResourceOwner(array $response, AccessToken $token): EveOnlineResourceOwner
     {
