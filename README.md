@@ -126,4 +126,4 @@ Feel free to submit a pull request or create an issue.
 
 ## License
 
-alcohol/oauth2-ccp is licensed under the MIT license.
+oauth2-eveonline is licensed under the MIT license.
