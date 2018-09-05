@@ -20,73 +20,56 @@ class EveOnlineResourceOwner implements ResourceOwnerInterface
      */
     protected $response;
 
-    /**
-     * @param $response
-     */
-    public function __construct($response)
+    public function __construct(array $response)
     {
         $this->response = $response;
     }
 
-    /**
-     * @return int
-     */
     public function getId(): int
     {
         return $this->response['CharacterID'];
     }
 
-    /**
-     * @return string
-     */
+    public function getCharacterId(): int
+    {
+        return $this->getId();
+    }
+
     public function getName(): string
     {
         return $this->response['CharacterName'];
     }
 
-    /**
-     * @return \DateTime
-     */
+    public function getCharacterName(): string
+    {
+        return $this->getName();
+    }
+
     public function getExpiresOn(): \DateTime
     {
         return new \DateTime($this->response['ExpiresOn'], new \DateTimeZone('UTC'));
     }
 
-    /**
-     * @return string[]
-     */
     public function getScopes(): array
     {
         return explode(' ', $this->response['Scopes']);
     }
 
-    /**
-     * @return string
-     */
     public function getTokenType(): string
     {
         return $this->response['TokenType'];
     }
 
-    /**
-     * @return string
-     */
     public function getCharacterOwnerHash(): string
     {
         return $this->response['CharacterOwnerHash'];
     }
 
-    /**
-     * @return string
-     */
     public function getIntellectualProperty(): string
     {
         return $this->response['IntellectualProperty'];
     }
 
-    /**
-     * @return array
-     */
     public function toArray(): array
     {
         return $this->response;
