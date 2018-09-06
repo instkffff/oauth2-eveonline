@@ -9,6 +9,8 @@
 
 namespace Alcohol\OAuth2\Client\Provider;
 
+use DateTime;
+use DateTimeZone;
 use League\OAuth2\Client\Provider\ResourceOwnerInterface;
 
 class EveOnlineResourceOwner implements ResourceOwnerInterface
@@ -45,9 +47,9 @@ class EveOnlineResourceOwner implements ResourceOwnerInterface
         return $this->getName();
     }
 
-    public function getExpiresOn(): \DateTime
+    public function getExpiresOn(): DateTime
     {
-        return new \DateTime($this->response['ExpiresOn'], new \DateTimeZone('UTC'));
+        return new DateTime($this->response['ExpiresOn'], new DateTimeZone('UTC'));
     }
 
     public function getScopes(): array
