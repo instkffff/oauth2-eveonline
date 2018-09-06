@@ -30,5 +30,10 @@
     "psr-4": {
       "Alcohol\\OAuth2\\Client\\Provider\\": ["src"]
     }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "2.1-dev"
+    }
   }
 }
