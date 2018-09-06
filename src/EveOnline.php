@@ -94,7 +94,7 @@ class EveOnline extends AbstractProvider
     {
         if ($response->getStatusCode() >= 400) {
             throw new IdentityProviderException(
-                $data['error'] ?: $response->getReasonPhrase(),
+                $data['error'] ?? $response->getReasonPhrase(),
                 $response->getStatusCode(),
                 $response
             );
