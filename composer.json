@@ -23,7 +23,7 @@
     "email": "rob.bast@gmail.com"
   }],
   "require": {
-    "php": "^7.2",
+    "php": "^7.1",
     "league/oauth2-client": "^2.0"
   },
   "autoload": {
